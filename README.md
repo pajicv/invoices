@@ -3,11 +3,11 @@
 Personal application that helps me managing invoices. 
 For use in local environment. 
 
-###Built with
+Built with:
 
-React Hooks, styled-components, and alasql
+###`React Hooks, styled-components, and alasql`
 
-###To launch, run:
+To launch, run:
 
 ### `yarn start`
 
