@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {Check, FileExport, MoneyCheck} from 'styled-icons/fa-solid'
+import { Check, MoneyCheck } from 'styled-icons/fa-solid'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 import InvoiceCard from './InvoiceCard'
-import { componentHeights } from '../constants'
 
 const Container = styled.div`
   width: 100vw;

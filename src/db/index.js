@@ -1,4 +1,5 @@
 import * as alasql from 'alasql'
+import { clients as clientsData, users as usersData } from './data'
 
 export const init = () => {
   alasql(`
@@ -23,20 +24,36 @@ export const init = () => {
 
   alasql(`CREATE TABLE IF NOT EXISTS clients (
     id INT PRIMARY KEY, 
-    name STRING
+    name STRING,
+    address STRING,
+    city STRING,
+    zip STRING,
+    accountNumber STRING,
+    taxNumber STRING,
+    registrationNumber STRING
+  )`)
+
+  alasql(`CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY, 
+    name STRING,
+    address STRING,
+    city STRING,
+    zip STRING,
+    accountNumber STRING,
+    taxNumber STRING,
+    registrationNumber STRING
   )`)
 
   const clients = alasql('SELECT * FROM clients')
 
   if (clients.length === 0) {
-    alasql('INSERT INTO clients VALUES ?', [{
-      id: 1,
-      name: 'Client 1'
-    }])
-    alasql('INSERT INTO clients VALUES ?', [{
-      id: 2,
-      name: 'Client 2'
-    }])
+    clientsData.map(client => alasql('INSERT INTO clients VALUES ?', [{ ...client }]))
+  }
+
+  const users = alasql('SELECT * FROM users')
+
+  if (users.length === 0) {
+    usersData.map(user => alasql('INSERT INTO users VALUES ?', [{ ...user }]))
   }
 }
 

@@ -1,12 +1,11 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { ExclamationTriangle } from 'styled-icons/fa-solid'
-import 'react-vertical-timeline-component/style.min.css'
-import InvoiceForm from '../components/InvoiceForm'
-import Modal from '../components/Modal'
-import { fetchInvoices, fetchClients, getLastInvoiceNumber, insertInvoice, exportToCSV, updateInvoice } from '../db'
-import InvoiceToolbar from '../components/InvoiceToolbar'
-import InvoicesTimeline from '../components/InvoicesTimeline'
+import InvoiceForm from './InvoiceForm'
+import InvoicesModal from './InvoicesModal'
+import InvoicesToolbar from './InvoicesToolbar'
+import InvoicesTimeline from './InvoicesTimeline'
+import { fetchInvoices, fetchClients, getLastInvoiceNumber, insertInvoice, exportToCSV, updateInvoice } from '../../db'
 
 const TitleBar = styled.div`
   height: 8rem;
@@ -15,13 +14,6 @@ const TitleBar = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`
-
-const Invoices = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
 `
 
 const ExclamationTriangleIcon = styled(ExclamationTriangle)`
@@ -94,14 +86,14 @@ export default () => {
       } else {
         await insertInvoice({ ...invoice, amountRSD })
       }
+      const invoices = await fetchInvoices()
+      setInvoices(invoices)
     } catch (error) {
       console.log(error)
     } finally {
       setInvoice(null)
-      setInvoice(null)
+      setIsInvoiceEditing(false)
     }
-    const invoices = await fetchInvoices()
-    setInvoices(invoices)
   }
 
   const handleInvoiceFormClose = () => setInvoice(null)
@@ -125,8 +117,9 @@ export default () => {
   }
 
   const handleInvoiceCopy = (invoice) => {
+    const { id, ...rest } = invoice
     setInvoice({
-      ...invoice,
+      ...rest,
       invoiceNumber: nextInvoiceNumber,
       invoiceYear: currentYear
     })
@@ -155,11 +148,11 @@ export default () => {
         onInvoicePrint={handleInvoicePrint}
         onInvoiceCopy={handleInvoiceCopy}
       />
-      <InvoiceToolbar
+      <InvoicesToolbar
         onCreate={handleInvoiceCreate}
         onExport={handleExportToCSV}
       />
-      <Modal
+      <InvoicesModal
         open={Boolean(invoice) && isInvoiceEditing}
         onClose={handleInvoiceFormClose}
       >
@@ -170,7 +163,7 @@ export default () => {
           onSubmit={handleInvoiceSave}
           onCancel={handleInvoiceFormClose}
         />
-      </Modal>
+      </InvoicesModal>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import Invoices from './containers/Invoices'
+import Invoices from './components/Invoices'
 // import QueryTool from './containers/QueryTool'
 import './App.css'
 

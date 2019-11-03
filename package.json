@@ -5,9 +5,11 @@
   "dependencies": {
     "alasql": "^0.5.1",
     "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-json-viewer": "^2.1.0",
+    "react-pdf": "^4.1.0",
     "react-scripts": "3.2.0",
     "react-vertical-timeline-component": "^2.5.0",
     "styled-components": "^4.4.0",

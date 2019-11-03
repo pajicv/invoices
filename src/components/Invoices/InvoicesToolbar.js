@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FileExport, Plus } from 'styled-icons/fa-solid'
-import InvoiceToolbarButton from './InvoiceToolbarButton'
+import InvoiceToolbarButton from './InvoicesToolbarButton'
 
 const Toolbar = styled.div`
   position: relative;
@@ -27,7 +27,7 @@ const PlusIcon = styled(Plus)`
   height: 1rem;
 `
 
-const InvoiceToolbar = ({ onCreate, onExport }) => (
+const InvoicesToolbar = ({ onCreate, onExport }) => (
   <Toolbar>
     <InvoiceToolbarButton
       title='Add Invoice'
@@ -44,4 +44,4 @@ const InvoiceToolbar = ({ onCreate, onExport }) => (
   </Toolbar>
 )
 
-export default InvoiceToolbar
+export default InvoicesToolbar

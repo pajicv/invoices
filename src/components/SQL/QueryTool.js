@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { executeQuery } from '../db'
-import SQLQuery from '../components/sql/Query'
-import SQLQueryResults from '../components/sql/Results'
+import { executeQuery } from '../../db'
+import SQLQuery from './Query'
+import SQLQueryResults from './Results'
 
 const Container = styled.div`
   width: 80vw;

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FileExport } from 'styled-icons/fa-solid'
 
 const Button = styled.div`
   height: 2rem;
