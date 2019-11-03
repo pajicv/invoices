@@ -5,7 +5,7 @@ For use in local environment.
 
 ### Built with:
 
-### `React Hooks, styled-components, and alasql`
+### `React Hooks, styled-components, alasql and react-pdf`
 
 ### To launch, run:
 
