@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Print, Copy, Pen } from 'styled-icons/fa-solid'
 import moment from 'moment'
@@ -95,7 +96,7 @@ const Button = styled.div`
   }
 `
 
-export default ({
+export const InvoiceCard = ({
   clientName, issueDate, paymentDate, amountRSD, invoiceNumber, invoiceYear, position, onEdit, onPrint, onCopy
 }) => {
   const [active, setActive] = useState(false)
@@ -150,3 +151,18 @@ export default ({
     </Container>
   )
 }
+
+InvoiceCard.propTypes = {
+  clientName: PropTypes.string.isRequired,
+  issueDate: PropTypes.string.isRequired,
+  paymentDate: PropTypes.string.isRequired,
+  amountRSD: PropTypes.number.isRequired,
+  invoiceNumber: PropTypes.string.isRequired,
+  invoiceYear: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onPrint: PropTypes.func.isRequired,
+  onCopy: PropTypes.func.isRequired
+}
+
+export default InvoiceCard

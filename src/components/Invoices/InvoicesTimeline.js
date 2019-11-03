@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Check, MoneyCheck } from 'styled-icons/fa-solid'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
